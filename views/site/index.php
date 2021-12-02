@@ -2,52 +2,104 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::$app->name;
 ?>
 <div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-4 d-flex flex-row">
+                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/avatar-default.png' ?>" alt="Аватар" style="border-radius: 20px; max-height: 200px;">
+                    <div style="margin-left: 20px;">
+                        <p class="lead">Иванов Иван Неиванович</p>
+                        <p><span class="text-uppercase">джун</span> <span class="text-success">1</span>-го уровня</p>
+                        <p><span class="text-success">0</span> ПСБоинтов</p>
+                        <p class="text-muted">На пути к успеху</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <p class="lead">Проект: <span class="font-weight-bold">PSB Project</span></p>
+                    <p>Стек технологий: Node.js, Express, MySQL</p>
+                </div>
+                <div class="col-lg-4 team">
+                    <p class="lead">Команда: <span class="font-weight-bold">Dream Team #11</span></p>
+                    <div class="d-flex flex-row align-items-center">
+                        <img src="<?= Yii::$app->request->BaseUrl . '/storage/avatar-default.png' ?>" alt="Аватар" style="max-height: 30px;">
+                        <p style="margin-left: 10px;">Василий Михайлович Г</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <img src="<?= Yii::$app->request->BaseUrl . '/storage/avatar-default.png' ?>" alt="Аватар" style="max-height: 30px;">
+                        <p style="margin-left: 10px;">Василий Михайлович Г</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <img src="<?= Yii::$app->request->BaseUrl . '/storage/avatar-default.png' ?>" alt="Аватар" style="max-height: 30px;">
+                        <p style="margin-left: 10px;">Василий Михайлович Г</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="body-content">
+    <div class="body-content mt-lg-5">
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2 class="alert-success">В процессе</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <ul class="list-group">
+                    <li class="list-group-item">Зайти</li>
+                    <li class="list-group-item">Поздороваться</li>
+                    <li class="list-group-item active">Покурить</li>
+                    <li class="list-group-item">Попрощаться</li>
+                    <li class="list-group-item">Выйти</li>
+                </ul>
 
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p class="mt-2">
+                    <button class="btn btn-primary">Перейти</button>
+                </p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2 class="alert-info">В очереди</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <ul class="list-group">
+                    <li class="list-group-item">Зайти</li>
+                    <li class="list-group-item">Поздороваться</li>
+                    <li class="list-group-item">Покурить</li>
+                    <li class="list-group-item">Попрощаться</li>
+                    <li class="list-group-item">Выйти</li>
+                </ul>
 
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p class="mt-2">
+                    <button class="btn btn-primary">Перейти</button>
+                </p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2 class="alert-warning">Завершенные</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <ul class="list-group">
+                    <li class="list-group-item">Зайти</li>
+                    <li class="list-group-item">Поздороваться</li>
+                    <li class="list-group-item">Покурить</li>
+                    <li class="list-group-item">Попрощаться</li>
+                    <li class="list-group-item">Выйти</li>
+                </ul>
 
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p class="mt-2">
+                    <button class="btn btn-primary">Перейти</button>
+                </p>
             </div>
         </div>
 
     </div>
 </div>
+
+<style>
+    h2 {
+        padding: 0 10px;
+    }
+
+    .team > div:not(:nth-child(1)) {
+        margin-top: 10px;
+    }
+</style>
