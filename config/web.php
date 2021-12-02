@@ -4,6 +4,8 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'id' => 'basic',
     'name' => 'Промсвязьбанк',
     'basePath' => dirname(__DIR__),
