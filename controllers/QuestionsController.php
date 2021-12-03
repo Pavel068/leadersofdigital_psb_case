@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * QuestionsController implements the CRUD actions for Questions model.
  */
-class QuestionsController extends Controller
+class QuestionsController extends _AdminController
 {
     /**
      * @inheritDoc

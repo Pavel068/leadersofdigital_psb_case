@@ -37,6 +37,11 @@ AppAsset::register($this);
             'class' => 'navbar navbar-dark bg-dark fixed-top',
         ],
     ]);
+
+    $admin_items = [
+
+    ];
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [

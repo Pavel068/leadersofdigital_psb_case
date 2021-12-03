@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * UsersTasksController implements the CRUD actions for UsersTasks model.
  */
-class UsersTasksController extends Controller
+class UsersTasksController extends _AdminController
 {
     /**
      * @inheritDoc

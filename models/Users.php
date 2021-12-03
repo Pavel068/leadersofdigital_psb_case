@@ -86,4 +86,16 @@ class Users extends \yii\db\ActiveRecord
     {
         return $this->hasMany(UsersAchieves::className(), ['user_id' => 'id']);
     }
+
+    public function beforeSave($insert): bool
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord && $this->password) {
+                $this->password = Yii::$app->security->generatePasswordHash($this->password);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

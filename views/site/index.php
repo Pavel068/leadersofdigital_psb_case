@@ -12,10 +12,12 @@ $this->title = Yii::$app->name;
                 <div class="col-lg-4 d-flex flex-row">
                     <img src="<?= Yii::$app->request->BaseUrl . '/storage/avatar-default.png' ?>" alt="Аватар" style="border-radius: 20px; max-height: 200px;">
                     <div style="margin-left: 20px;">
-                        <p class="lead">Иванов Иван Неиванович</p>
-                        <p><span class="text-uppercase">джун</span> <span class="text-success">1</span>-го уровня</p>
-                        <p><span class="text-success">0</span> ПСБоинтов</p>
-                        <p class="text-muted">На пути к успеху</p>
+                        <p class="lead"><?= Yii::$app->getUser()->identity->name ?></p>
+                        <p>
+                            <span class="text-uppercase"><?= \app\helpers\Helper::RANKS[Yii::$app->getUser()->identity->level] ?></span>
+                            <span class="text-success"><?= Yii::$app->getUser()->identity->level ?></span>-го уровня
+                        </p>
+                        <p><span class="text-success"><?= Yii::$app->getUser()->identity->points ?></span> ПСБоинтов</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -51,8 +53,27 @@ $this->title = Yii::$app->name;
     <div class="body-content">
 
         <div class="card mt-lg-3">
+            <div class="card-header">Мой прогресс:</div>
             <div class="card-body">
-                <h1>ТУТ БУДЕТ ШКАЛА ПРОГРЕССА</h1>
+                <div class="rank-avatar-wrapper">
+                    <?php foreach (\app\helpers\Helper::RANKS as $key => $rank): ?>
+                        <img src="<?= Yii::$app->request->BaseUrl . '/storage/ranks/' . ($key + 1) . '.jpg' ?>" alt="" class="rank_avatar <?php if ($key + 1 > Yii::$app->getUser()->identity->level):?>rank_disabled<?php endif;?>">
+                        <?php if ($key != 9): ?>
+                            <i class="fas fa-arrow-right"></i>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="mt-lg-3">
+                    <div>
+                        Ранг: <span class="font-weight-bold"><?= \app\helpers\Helper::RANKS[Yii::$app->getUser()->identity->level] ?></span>.
+                        До следующего уровня:
+                        <span class="font-weight-bold"><?= 1000 - Yii::$app->getUser()->identity->experience ?></span> очков опыта.
+                    </div>
+                    <div class="experience">
+                        <div class="experience-full" style="width: <?= (Yii::$app->getUser()->identity->experience / 1000) * 100; ?>%">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -155,5 +176,37 @@ $this->title = Yii::$app->name;
 
     .list-group > li:not(:nth-child(1)) {
         margin-top: 5px;
+    }
+
+    .rank-avatar-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .rank_avatar {
+        width: 75px;
+        height: 75px;
+        border-radius: 50px;
+    }
+
+    .rank_disabled {
+        opacity: .25;
+    }
+
+    .experience {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    .experience-full {
+        height: 100%;
+        text-align: right;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        color: white;
+        background-color: #28a745;
     }
 </style>

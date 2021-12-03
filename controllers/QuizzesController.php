@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * QuizzesController implements the CRUD actions for Quizzes model.
  */
-class QuizzesController extends Controller
+class QuizzesController extends _AdminController
 {
     /**
      * @inheritDoc
