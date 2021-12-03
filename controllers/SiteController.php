@@ -69,6 +69,15 @@ class SiteController extends Controller
         }
     }
 
+    public function actionStudy()
+    {
+        if (Yii::$app->user->identity == NULL) {
+            $this->redirect(Url::base(true) . '/site/login');
+        } else {
+            return $this->render('study');
+        }
+    }
+
     /**
      * Login action.
      *
@@ -77,12 +86,20 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            if (Yii::$app->getUser()->identity->role == 'novice') {
+                $this->redirect(Url::base(true) . '/site/index');
+            } else {
+                $this->redirect(Url::base(true) . '/tasks/index');
+            }
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if (Yii::$app->getUser()->identity->role == 'novice') {
+                $this->redirect(Url::base(true) . '/site/index');
+            } else {
+                $this->redirect(Url::base(true) . '/tasks/index');
+            }
         }
 
         $model->password = '';

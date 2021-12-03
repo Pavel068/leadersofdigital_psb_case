@@ -53,11 +53,12 @@ $this->title = Yii::$app->name;
     <div class="body-content">
 
         <div class="card mt-lg-3">
-            <div class="card-header">Мой прогресс:</div>
+            <div class="card-header">Мой прогресс</div>
             <div class="card-body">
                 <div class="rank-avatar-wrapper">
                     <?php foreach (\app\helpers\Helper::RANKS as $key => $rank): ?>
-                        <img src="<?= Yii::$app->request->BaseUrl . '/storage/ranks/' . ($key + 1) . '.jpg' ?>" alt="" class="rank_avatar <?php if ($key + 1 > Yii::$app->getUser()->identity->level):?>rank_disabled<?php endif;?>">
+                        <img src="<?= Yii::$app->request->BaseUrl . '/storage/ranks/' . ($key + 1) . '.jpg' ?>" alt=""
+                             class="rank_avatar <?php if ($key + 1 > Yii::$app->getUser()->identity->level): ?>rank_disabled<?php endif; ?>">
                         <?php if ($key != 9): ?>
                             <i class="fas fa-arrow-right"></i>
                         <?php endif; ?>
@@ -78,6 +79,19 @@ $this->title = Yii::$app->name;
         </div>
 
         <div class="card mt-lg-3">
+            <div class="card-header">Мои награды</div>
+            <div class="card-body">
+                <div class="achieves">
+                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
+                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
+                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
+                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
+                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-lg-3">
             <div class="card-header">Мои задачи</div>
             <div class="card-body">
                 <div class="row">
@@ -93,7 +107,7 @@ $this->title = Yii::$app->name;
                         </ul>
 
                         <p class="mt-2">
-                            <button class="btn btn-primary">Перейти</button>
+                            <a class="btn btn-primary" href="/site/study">Перейти</a>
                         </p>
                     </div>
                     <div class="col-lg-4">
@@ -108,7 +122,7 @@ $this->title = Yii::$app->name;
                         </ul>
 
                         <p class="mt-2">
-                            <button class="btn btn-primary">Перейти</button>
+                            <a class="btn btn-primary" href="/site/study">Перейти</a>
                         </p>
                     </div>
                     <div class="col-lg-4">
@@ -123,7 +137,7 @@ $this->title = Yii::$app->name;
                         </ul>
 
                         <p class="mt-2">
-                            <button class="btn btn-primary">Перейти</button>
+                            <a class="btn btn-primary" href="/site/study">Перейти</a>
                         </p>
                     </div>
                 </div>
@@ -208,5 +222,19 @@ $this->title = Yii::$app->name;
         padding-right: 10px;
         color: white;
         background-color: #28a745;
+    }
+
+    .achieves {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .achieves > img {
+        width: 75px;
+        height: 75px;
+        border-radius: 75px;
+        margin: 5px;
     }
 </style>
