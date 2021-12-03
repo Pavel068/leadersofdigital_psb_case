@@ -15,12 +15,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <p class="lead text-justify"><?= $question['question_text'] ?></p>
             <div class="variants">
                 <?php foreach ($question['answers'] as $answer):  ?>
-                    <button class="btn btn-outline-success"><?= $answer['text']; ?></button>
+                    <input type="radio" id="<?= $answer['id']; ?>" name="<?= $question['id']; ?>" value="<?= $answer['id']; ?>">
+                    <label class="btn btn-outline-success" for="<?= $answer['id']; ?>"><?= $answer['text']; ?></label>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
     <?php endforeach; ?>
+
+    <button class="mt-5 btn btn-primary">Отправить</button>
 </div>
 
 <style>
@@ -31,5 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     .variants > *:not(:nth-child(1)) {
         margin-top: 5px;
+    }
+
+    .variants input[type='radio'] {
+        display: none;
+    }
+
+    .variants input[type='radio']:checked + label {
+        background-color: #28a745;
+        color: #ffffff;
+        font-weight: bold;
     }
 </style>

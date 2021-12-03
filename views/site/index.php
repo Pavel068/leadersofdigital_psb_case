@@ -84,11 +84,11 @@ $this->title = Yii::$app->name;
                 <div class="achieves">
                     <?php
                     $achieves = [
-                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/1.jpg', 'description' => 'Это круг'],
-                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/2.jpg', 'description' => 'Якорь мне в'],
-                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/3.jpg', 'description' => 'Шляпа все это...'],
-                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/4.jpg', 'description' => 'В глаза смотри!'],
-                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/5.jpg', 'description' => 'Крепче за баранку'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/1.jpg', 'description' => 'Надежный'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/2.jpg', 'description' => 'Цепкий'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/3.jpg', 'description' => 'СтарПом'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/4.jpg', 'description' => 'Воронье гнездо'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/5.jpg', 'description' => 'Держи курс!'],
                     ];
                     ?>
                     <?php foreach ($achieves as $achieve): ?>
