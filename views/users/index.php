@@ -33,8 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     return \app\helpers\Helper::ROLES[$model->role];
                 }
             ],
+            [
+                'attribute' => 'department',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::DEPARTMENTS[$model->department];
+                }
+            ],
             'points',
             'level',
+            'experience',
             'created_at',
             'updated_at',
 

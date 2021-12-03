@@ -17,8 +17,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'points', 'level'], 'integer'],
-            [['name', 'role', 'email', 'password', 'access_token', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'points', 'level', 'experience'], 'integer'],
+            [['name', 'role', 'email', 'password', 'department', 'access_token', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -61,12 +61,14 @@ class UsersSearch extends Users
             'id' => $this->id,
             'points' => $this->points,
             'level' => $this->level,
+            'experience' => $this->experience,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'role', $this->role])
+            ->andFilterWhere(['like', 'department', $this->department])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'password', $this->password])
             ->andFilterWhere(['like', 'access_token', $this->access_token]);

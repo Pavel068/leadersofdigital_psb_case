@@ -8,6 +8,8 @@ use Yii;
  * This is the model class for table "tasks".
  *
  * @property int $id
+ * @property string $department
+ * @property string $type
  * @property string $name
  * @property string|null $description
  * @property string|null $content_url
@@ -34,11 +36,11 @@ class Tasks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'quiz_id'], 'required'],
+            [['department', 'type', 'name', 'quiz_id'], 'required'],
             [['description'], 'string'],
             [['quiz_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'content_url'], 'string', 'max' => 255],
+            [['department', 'type', 'name', 'content_url'], 'string', 'max' => 255],
             [['quiz_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quizzes::className(), 'targetAttribute' => ['quiz_id' => 'id']],
         ];
     }
@@ -50,6 +52,8 @@ class Tasks extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'department' => 'Подразделение',
+            'type' => 'Тип задачи',
             'name' => 'Название',
             'description' => 'Описание',
             'content_url' => 'Ссылка на контент',

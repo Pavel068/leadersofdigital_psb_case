@@ -15,4 +15,17 @@ class Helper
     public const BINARY = [
         'Нет', 'Да'
     ];
+
+    public const DEPARTMENTS = [
+        'tech' => 'Технический департамент',
+        'code' => 'Отдел разработки ПО',
+        'support' => 'Группа технической поддержки',
+    ];
+
+    public const TASK_TYPES = [
+        'tech' => 'Техническая',
+        'corporate' => 'Корпоративная',
+        'organize' => 'Организационная',
+        'fan' => 'Развлекательная',
+    ];
 }

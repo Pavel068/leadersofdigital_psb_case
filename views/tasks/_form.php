@@ -12,6 +12,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'department')->dropDownList(\app\helpers\Helper::DEPARTMENTS) ?>
+
+    <?= $form->field($model, 'type')->dropDownList(\app\helpers\Helper::TASK_TYPES) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>

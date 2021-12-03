@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Tasks;
+use app\models\Achieves;
 
 /**
- * TasksSearch represents the model behind the search form of `app\models\Tasks`.
+ * AchievesSearch represents the model behind the search form of `app\models\Achieves`.
  */
-class TasksSearch extends Tasks
+class AchievesSearch extends Achieves
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class TasksSearch extends Tasks
     public function rules()
     {
         return [
-            [['id', 'quiz_id'], 'integer'],
-            [['department', 'type', 'name', 'description', 'content_url', 'created_at', 'updated_at'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'description', 'url', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class TasksSearch extends Tasks
      */
     public function search($params)
     {
-        $query = Tasks::find();
+        $query = Achieves::find();
 
         // add conditions that should always apply here
 
@@ -59,16 +59,13 @@ class TasksSearch extends Tasks
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quiz_id' => $this->quiz_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'department', $this->department])
-            ->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'content_url', $this->content_url]);
+            ->andFilterWhere(['like', 'url', $this->url]);
 
         return $dataProvider;
     }

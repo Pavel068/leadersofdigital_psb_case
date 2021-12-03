@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Users */
+/* @var $model app\models\Achieves */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Пользователи', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ачивки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="users-view">
+<div class="achieves-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,22 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            [
-                'attribute' => 'role',
-                'value' => function ($model) {
-                    return \app\helpers\Helper::ROLES[$model->role];
-                }
-            ],
-            [
-                'attribute' => 'department',
-                'value' => function ($model) {
-                    return \app\helpers\Helper::DEPARTMENTS[$model->department];
-                }
-            ],
-            'email:email',
-            'points',
-            'level',
-            'experience',
+            'description',
+            'url:url',
             'created_at',
             'updated_at',
         ],

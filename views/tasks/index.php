@@ -26,6 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            [
+                'attribute' => 'department',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::DEPARTMENTS[$model->department];
+                }
+            ],
+            [
+                'attribute' => 'type',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::TASK_TYPES[$model->type];
+                }
+            ],
             'name',
             'description:ntext',
             'content_url:url',
@@ -36,8 +48,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $quiz ? $quiz->name : null;
                 }
             ],
-            'created_at',
-            'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

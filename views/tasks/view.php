@@ -30,6 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            [
+                'attribute' => 'department',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::DEPARTMENTS[$model->department];
+                }
+            ],
+            [
+                'attribute' => 'type',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::TASK_TYPES[$model->type];
+                }
+            ],
             'name',
             'description:ntext',
             'content_url:url',

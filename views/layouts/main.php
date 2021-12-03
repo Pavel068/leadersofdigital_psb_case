@@ -9,6 +9,9 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use kartik\icons\Icon;
+
+Icon::map($this);
 
 AppAsset::register($this);
 ?>
@@ -44,6 +47,7 @@ AppAsset::register($this);
             ['label' => 'Викторины', 'url' => ['/quizzes/index']],
             ['label' => 'Вопросы', 'url' => ['/questions/index']],
             ['label' => 'Ответы', 'url' => ['/answers/index']],
+            ['label' => 'Ачивки', 'url' => ['/achieves/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Вход', 'url' => ['/site/login']]
             ) : (
