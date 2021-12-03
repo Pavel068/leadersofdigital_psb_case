@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\QuizzesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Quizzes';
+$this->title = 'Викторины';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="quizzes-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Quizzes', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать викторину', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,7 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'name',
             'points',
-            'is_active',
+            [
+                'attribute' => 'is_active',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::BINARY[$model->is_active];
+                }
+            ],
             'created_at',
             'updated_at',
 

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Answers */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Answers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ответы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -31,8 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'text:ntext',
-            'question_id',
-            'is_right',
+            [
+                'attribute' => 'question_id',
+                'value' => function ($model) {
+                    $question = \app\models\Questions::find()->where(['id' => $model->question_id])->one();
+                    return $question ? $question->question_text : null;
+                }
+            ],
+            [
+                'attribute' => 'is_right',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::BINARY[$model->is_right];
+                }
+            ],
             'created_at',
             'updated_at',
         ],

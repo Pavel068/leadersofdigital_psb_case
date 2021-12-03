@@ -50,12 +50,12 @@ class Tasks extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'content_url' => 'Content Url',
-            'quiz_id' => 'Quiz ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'content_url' => 'Ссылка на контент',
+            'quiz_id' => 'Викторина',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 

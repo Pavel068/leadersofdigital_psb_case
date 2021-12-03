@@ -39,7 +39,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Задачи', 'url' => ['/tasks/index']],
-            ['label' => 'Сотрудники', 'url' => ['/users/index']],
+            ['label' => 'Пользователи', 'url' => ['/users/index']],
             ['label' => 'Присвоенные задачи', 'url' => ['/users-tasks/index']],
             ['label' => 'Викторины', 'url' => ['/quizzes/index']],
             ['label' => 'Вопросы', 'url' => ['/questions/index']],

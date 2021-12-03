@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Quizzes */
 
-$this->title = 'Create Quizzes';
-$this->params['breadcrumbs'][] = ['label' => 'Quizzes', 'url' => ['index']];
+$this->title = 'Создать викторину';
+$this->params['breadcrumbs'][] = ['label' => 'Викторины', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="quizzes-create">

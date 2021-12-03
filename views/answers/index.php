@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AnswersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Answers';
+$this->title = 'Ответы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="answers-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Answers', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить вариант ответа', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,8 +27,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'text:ntext',
-            'question_id',
-            'is_right',
+            [
+                'attribute' => 'question_id',
+                'value' => function ($model) {
+                    $question = \app\models\Questions::find()->where(['id' => $model->question_id])->one();
+                    return $question ? $question->question_text : null;
+                }
+            ],
+            [
+                'attribute' => 'is_right',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::BINARY[$model->is_right];
+                }
+            ],
             'created_at',
             'updated_at',
 

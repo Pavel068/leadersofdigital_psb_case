@@ -47,11 +47,11 @@ class Answers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'text' => 'Text',
-            'question_id' => 'Question ID',
-            'is_right' => 'Is Right',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'text' => 'Текст',
+            'question_id' => 'Вопрос',
+            'is_right' => 'Правильно',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 

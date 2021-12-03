@@ -18,10 +18,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'content_url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quiz_id')->textInput() ?>
+    <?= $form->field($model, 'quiz_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Quizzes::find()->where(['is_active' => 1])->all(), 'id', 'name')) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

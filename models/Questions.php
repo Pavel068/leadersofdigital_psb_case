@@ -47,10 +47,10 @@ class Questions extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'quiz_id' => 'Quiz ID',
-            'question_text' => 'Question Text',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'quiz_id' => 'Викторина',
+            'question_text' => 'Текст вопроса',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 

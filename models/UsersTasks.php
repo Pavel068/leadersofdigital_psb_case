@@ -49,12 +49,12 @@ class UsersTasks extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'task_id' => 'Task ID',
-            'is_complete' => 'Is Complete',
-            'deadline' => 'Deadline',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'user_id' => 'Пользователь',
+            'task_id' => 'Задача',
+            'is_complete' => 'Завершено',
+            'deadline' => 'Дедлайн',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 

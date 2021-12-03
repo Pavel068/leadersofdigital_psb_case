@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\UsersTasks */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users Tasks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Присвоенные задачи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -30,9 +30,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
-            'task_id',
-            'is_complete',
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    $user = \app\models\Users::find()->where(['id' => $model->id])->one();
+                    return $user ? $user->name : null;
+                }
+            ],
+            [
+                'attribute' => 'task_id',
+                'value' => function ($model) {
+                    $task = \app\models\Tasks::find()->where(['id' => $model->id])->one();
+                    return $task ? $task->name : null;
+                }
+            ],
+            [
+                'attribute' => 'is_complete',
+                'value' => function ($model) {
+                    return \app\helpers\Helper::BINARY[$model->is_complete];
+                }
+            ],
             'deadline',
             'created_at',
             'updated_at',

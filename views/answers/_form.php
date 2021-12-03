@@ -14,12 +14,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'question_id')->textInput() ?>
+    <?= $form->field($model, 'question_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Questions::find()->all(), 'id', 'question_text')) ?>
 
-    <?= $form->field($model, 'is_right')->textInput() ?>
+    <?= $form->field($model, 'is_right')->dropDownList(\app\helpers\Helper::BINARY) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

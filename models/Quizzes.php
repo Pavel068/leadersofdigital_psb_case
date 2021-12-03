@@ -48,11 +48,11 @@ class Quizzes extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'points' => 'Points',
-            'is_active' => 'Is Active',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Название',
+            'points' => 'Кол-во очков',
+            'is_active' => 'Активен',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 

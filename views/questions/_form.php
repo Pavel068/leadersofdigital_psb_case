@@ -12,12 +12,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'quiz_id')->textInput() ?>
+    <?= $form->field($model, 'quiz_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Quizzes::find()->where(['is_active' => 1])->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'question_text')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

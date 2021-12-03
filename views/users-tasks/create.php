@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\UsersTasks */
 
-$this->title = 'Create Users Tasks';
-$this->params['breadcrumbs'][] = ['label' => 'Users Tasks', 'url' => ['index']];
+$this->title = 'Присвоить задачу';
+$this->params['breadcrumbs'][] = ['label' => 'Присвоенные задачи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-tasks-create">

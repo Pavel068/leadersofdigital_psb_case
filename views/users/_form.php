@@ -14,14 +14,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'role')->dropDownList([ 'admin' => 'Admin', 'novice' => 'Novice', 'worker' => 'Worker', 'manager' => 'Manager', 'coach' => 'Coach', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'role')->dropDownList(\app\helpers\Helper::ROLES, ['prompt' => '']) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
