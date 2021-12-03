@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'quiz_id',
                 'value' => function ($model) {
-                    $quiz = \app\models\Quizzes::find()->where(['id' => $model->id])->one();
+                    $quiz = \app\models\Quizzes::find()->where(['id' => $model->quiz_id])->one();
                     return $quiz ? $quiz->name : null;
                 }
             ],

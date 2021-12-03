@@ -33,14 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'user_id',
                 'value' => function ($model) {
-                    $user = \app\models\Users::find()->where(['id' => $model->id])->one();
+                    $user = \app\models\Users::find()->where(['id' => $model->user_id])->one();
                     return $user ? $user->name : null;
                 }
             ],
             [
                 'attribute' => 'task_id',
                 'value' => function ($model) {
-                    $task = \app\models\Tasks::find()->where(['id' => $model->id])->one();
+                    $task = \app\models\Tasks::find()->where(['id' => $model->task_id])->one();
                     return $task ? $task->name : null;
                 }
             ],
