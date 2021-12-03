@@ -9,7 +9,7 @@ $this->title = Yii::$app->name;
     <div class="body-content">
         <div class="card">
             <div class="card-header">Мои задания</div>
-            <div class="card-body">
+            <div class="card-body shadow">
                 <?php
                 $tasks = \app\models\Tasks::find()->all();
                 ?>

@@ -52,7 +52,7 @@ class UsersTasks extends \yii\db\ActiveRecord
             'user_id' => 'Пользователь',
             'task_id' => 'Задача',
             'is_complete' => 'Завершено',
-            'deadline' => 'Дедлайн',
+            'deadline' => 'Срок',
             'created_at' => 'Создано',
             'updated_at' => 'Обновлено',
         ];

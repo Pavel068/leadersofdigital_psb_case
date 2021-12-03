@@ -7,7 +7,7 @@ $this->title = Yii::$app->name;
 <div class="site-index">
 
     <div class="card">
-        <div class="card-body">
+        <div class="card-body shadow">
             <div class="row">
                 <div class="col-lg-4 d-flex flex-row">
                     <img src="<?= Yii::$app->request->BaseUrl . '/storage/avatar-default.png' ?>" alt="Аватар" style="border-radius: 20px; max-height: 200px;">
@@ -54,7 +54,7 @@ $this->title = Yii::$app->name;
 
         <div class="card mt-lg-3">
             <div class="card-header">Мой прогресс</div>
-            <div class="card-body">
+            <div class="card-body shadow">
                 <div class="rank-avatar-wrapper">
                     <?php foreach (\app\helpers\Helper::RANKS as $key => $rank): ?>
                         <img src="<?= Yii::$app->request->BaseUrl . '/storage/ranks/' . ($key + 1) . '.jpg' ?>" alt=""
@@ -80,20 +80,27 @@ $this->title = Yii::$app->name;
 
         <div class="card mt-lg-3">
             <div class="card-header">Мои награды</div>
-            <div class="card-body">
+            <div class="card-body shadow">
                 <div class="achieves">
-                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
-                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
-                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
-                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
-                    <img src="<?= Yii::$app->request->BaseUrl . '/storage/achieves/1.png' ?>" alt="">
+                    <?php
+                    $achieves = [
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/1.jpg', 'description' => 'Это круг'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/2.jpg', 'description' => 'Якорь мне в'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/3.jpg', 'description' => 'Шляпа все это...'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/4.jpg', 'description' => 'В глаза смотри!'],
+                        ['url' => Yii::$app->request->BaseUrl . '/storage/achieves/5.jpg', 'description' => 'Крепче за баранку'],
+                    ];
+                    ?>
+                    <?php foreach ($achieves as $achieve): ?>
+                        <img src="<?= $achieve['url'] ?>" alt="" data-toggle="tooltip" title="<?= $achieve['description'] ?>">
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
 
         <div class="card mt-lg-3">
             <div class="card-header">Мои задачи</div>
-            <div class="card-body">
+            <div class="card-body shadow">
                 <div class="row">
                     <div class="col-lg-4">
                         <h2 class="alert-success">В процессе</h2>
@@ -146,7 +153,7 @@ $this->title = Yii::$app->name;
 
         <div class="card mt-lg-3">
             <div class="card-header">Новости</div>
-            <div class="card-body">
+            <div class="card-body shadow">
                 <div id="profile_slider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">

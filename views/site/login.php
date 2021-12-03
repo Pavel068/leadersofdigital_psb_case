@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-header">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="card-body">
+        <div class="card-body shadow">
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
                 'layout' => 'horizontal',
