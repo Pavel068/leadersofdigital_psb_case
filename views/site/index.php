@@ -102,52 +102,57 @@ $this->title = Yii::$app->name;
             <div class="card-header">Мои задачи</div>
             <div class="card-body shadow">
                 <div class="row">
+
+                    <?php
+                    $tasks = \app\models\UsersTasks::find()
+                        ->with('task')
+                        ->where(['user_id' => Yii::$app->user->getId()])
+                        ->asArray()
+                        ->all();
+
+                    $group = [
+                        'current' => [],
+                        'next' => [],
+                        'closed' => []
+                    ];
+
+                    foreach ($tasks as $task) {
+                        if ($task['is_complete']) {
+                            $group['closed'][] = $task['task'];
+                        } else if ($task['deadline'] == date('Y-m-d', time()) || strtotime($task['deadline']) <= time()) {
+                            $group['current'][] = $task['task'];
+                        } else {
+                            $group['next'][] = $task['task'];
+                        }
+                    }
+                    ?>
+
                     <div class="col-lg-4">
-                        <h2 class="alert-success">В процессе</h2>
-
+                        <h2 class="alert-success">Ближайшие (<?= count($group['current']) ?>)</h2>
                         <ul class="list-group">
-                            <li class="list-group-item">Зайти</li>
-                            <li class="list-group-item">Поздороваться</li>
-                            <li class="list-group-item bg-success"><s>Покурить</s> Поговорить</li>
-                            <li class="list-group-item">Попрощаться</li>
-                            <li class="list-group-item">Выйти</li>
+                            <?php foreach ($group['current'] as $task): ?>
+                                <li class="list-group-item"><?= $task['name']; ?></li>
+                            <?php endforeach; ?>
                         </ul>
-
-                        <p class="mt-2">
-                            <a class="btn btn-primary" href="/site/study">Перейти</a>
-                        </p>
                     </div>
                     <div class="col-lg-4">
-                        <h2 class="alert-info">В очереди</h2>
-
+                        <h2 class="alert-info">В очереди (<?= count($group['next']) ?>)</h2>
                         <ul class="list-group">
-                            <li class="list-group-item">Зайти</li>
-                            <li class="list-group-item">Поздороваться</li>
-                            <li class="list-group-item"><s>Покурить</s> Поговорить</li>
-                            <li class="list-group-item">Попрощаться</li>
-                            <li class="list-group-item">Выйти</li>
+                            <?php foreach ($group['next'] as $task): ?>
+                                <li class="list-group-item"><?= $task['name']; ?></li>
+                            <?php endforeach; ?>
                         </ul>
-
-                        <p class="mt-2">
-                            <a class="btn btn-primary" href="/site/study">Перейти</a>
-                        </p>
                     </div>
                     <div class="col-lg-4">
-                        <h2 class="alert-warning">Завершенные</h2>
-
+                        <h2 class="alert-dark">Завершено (<?= count($group['closed']) ?>)</h2>
                         <ul class="list-group">
-                            <li class="list-group-item">Зайти</li>
-                            <li class="list-group-item">Поздороваться</li>
-                            <li class="list-group-item"><s>Покурить</s> Поговорить</li>
-                            <li class="list-group-item">Попрощаться</li>
-                            <li class="list-group-item">Выйти</li>
+                            <?php foreach ($group['closed'] as $task): ?>
+                                <li class="list-group-item"><?= $task['name']; ?></li>
+                            <?php endforeach; ?>
                         </ul>
-
-                        <p class="mt-2">
-                            <a class="btn btn-primary" href="/site/study">Перейти</a>
-                        </p>
                     </div>
                 </div>
+                <a class="mt-lg-5 btn btn-success w-100" href="/site/study">Погружаемся!</a>
             </div>
         </div>
 
