@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Quizzes;
+use app\models\Tasks;
+use app\models\UsersTasks;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
@@ -75,6 +78,17 @@ class SiteController extends Controller
             $this->redirect(Url::base(true) . '/site/login');
         } else {
             return $this->render('study');
+        }
+    }
+
+    public function actionView($id)
+    {
+        if (Yii::$app->user->identity == NULL) {
+            $this->redirect(Url::base(true) . '/site/login');
+        } else {
+            return $this->render('view', [
+                'quiz' => Tasks::find()->with('quiz.questions.answers')->where(['id' => $id])->asArray()->one()
+            ]);
         }
     }
 

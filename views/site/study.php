@@ -9,7 +9,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-study">
 
     <?php
-    $tasks = \app\models\Tasks::find()->all();
+    $tasks = \app\models\UsersTasks::find()
+        ->with('task')
+        ->where(['user_id' => Yii::$app->getUser()->id])
+        ->asArray()
+        ->all();
     ?>
 
     <table class="table table-bordered table-striped">
@@ -21,19 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
         </tr>
         <?php foreach ($tasks as $task): ?>
             <tr>
-                <td><?= $task->name ?></td>
+                <td><?= $task['task']['name'] ?></td>
                 <td>
                     <code class="text-muted" style="width: 250px;">
-                        <?= $task->description ?>
+                        <?= $task['task']['description'] ?>
                     </code>
                 </td>
                 <td>
-                    <?php if ($task->content_url): ?>
-                        <a href="<?= $task->content_url ?>" target="_blank">Материал</a>
+                    <?php if ($task['task']['content_url']): ?>
+                        <a href="<?= $task['task']['content_url'] ?>" target="_blank">Материал</a>
                     <?php endif; ?>
                 </td>
                 <td class="d-flex flex-row">
-                    <a href=""><i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/site/view/<?= $task['task_id'] ?>"><i class="fas fa-arrow-circle-right"></i></a>
                 </td>
             </tr>
         <?php endforeach; ?>
